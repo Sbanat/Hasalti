@@ -1,0 +1,8 @@
+<resources>
+    <string-array name="currencies_array">
+        <item>شيكل</item>
+        <item>دولار</item>
+        <item>دينار</item>
+    </string-array>
+    <string name="app_name" />
+</resources>

@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#0D1B2A">
+
+    <EditText
+        android:id="@+id/editExpenseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="نوع المصروف"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
+        android:inputType="text"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:id="@+id/editExpenseAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="المبلغ"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#AAAAAA"
+        android:inputType="numberDecimal"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <Spinner
+        android:id="@+id/spinnerExpenseCurrency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btnSaveExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="💾 حفظ المصروف"
+        android:backgroundTint="#F5A623"
+        android:textColor="#FFFFFF"
+        android:padding="12dp" />
+</LinearLayout>

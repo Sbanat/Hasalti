@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D1B2A"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ✅ أرصدة العملات -->
+        <TextView
+            android:id="@+id/txtShekel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="رصيد الشيكل: ₪ 0"
+            android:textSize="16sp"
+            android:textColor="#F5A623"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/txtDollar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="رصيد الدولار: $ 0"
+            android:textSize="16sp"
+            android:textColor="#F5A623"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/txtDinar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="رصيد الدينار: JD 0"
+            android:textSize="16sp"
+            android:textColor="#F5A623"
+            android:padding="8dp" />
+
+        <!-- ✅ أزرار الإضافة -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnAddIncome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:text="➕ مدخول"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF" />
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnAddExpense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:text="➖ مصروف"
+                android:backgroundTint="#F44336"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- ✅ أزرار القوائم -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <Button
+                android:id="@+id/btnViewAllIncome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="42dp"
+                android:text="📥 المدخلات"
+                android:backgroundTint="#1E88E5"
+                android:textColor="#FFFFFF" />
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnViewAllExpenses"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="42dp"
+                android:text="📤 المصروفات"
+                android:backgroundTint="#E65100"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- ✅ زر التقارير -->
+        <Button
+            android:id="@+id/btnReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="42dp"
+            android:layout_marginTop="16dp"
+            android:text="📊 عرض التقارير"
+            android:backgroundTint="#F5A623"
+            android:textColor="#FFFFFF" />
+
+        <!-- ✅ عنوان العمليات -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🧾 آخر العمليات:"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp" />
+
+        <!-- ✅ قائمة العمليات -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerTransactions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="8dp"
+            android:clipToPadding="false"/>
+    </LinearLayout>
+</ScrollView>

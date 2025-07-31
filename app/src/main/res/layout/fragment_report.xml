@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D1B2A"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 📋 عنوان التقرير -->
+        <TextView
+            android:id="@+id/txtSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📊 ملخص العمليات حسب العملة"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#F5A623"
+            android:layout_marginBottom="16dp" />
+
+        <!-- 🟢 شيكل -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="شيكل"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp" />
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieShekel"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+        <!-- 💵 دولار -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="دولار"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp" />
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieDollar"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+        <!-- 🟡 دينار -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="دينار"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp" />
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieDinar"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+    </LinearLayout>
+</ScrollView>
