@@ -11,6 +11,7 @@ import com.android.volley.toolbox.*;
 import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import android.graphics.Color;
 import android.util.Log;
 
 public class IncomeFragment extends Fragment {
@@ -31,8 +32,27 @@ public class IncomeFragment extends Fragment {
         spinnerIncomeCurrency = view.findViewById(R.id.spinnerIncomeCurrency);
         btnSaveIncome = view.findViewById(R.id.btnSaveIncome);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.currencies_array, android.R.layout.simple_spinner_item);
+        // إعداد العملات بلون أبيض داخل السبنر
+        String[] currencies = {"شيكل", "دولار", "دينار"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getContext(),
+                android.R.layout.simple_spinner_item,
+                currencies
+        ) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                ((TextView) view).setTextColor(Color.WHITE); // النص الأبيض للعرض العادي
+                return view;
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                ((TextView) view).setTextColor(Color.BLACK); // القائمة المنسدلة
+                return view;
+            }
+        };
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerIncomeCurrency.setAdapter(adapter);
 
@@ -68,7 +88,6 @@ public class IncomeFragment extends Fragment {
         params.put("amount", amount);
         params.put("currency", currency);
 
-        // إضافة التاريخ الحالي بصيغة yyyy-MM-dd
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         params.put("date", currentDate);
 

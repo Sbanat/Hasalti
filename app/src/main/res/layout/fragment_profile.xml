@@ -11,7 +11,6 @@
         android:padding="24dp"
         android:gravity="center_horizontal">
 
-        <!-- 🧑‍💼 عنوان -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,7 +21,6 @@
             android:layout_marginBottom="16dp"
             android:textColor="#F5A623" />
 
-        <!-- 👤 صورة الحساب -->
         <ImageView
             android:id="@+id/imgProfile"
             android:layout_width="100dp"
@@ -32,7 +30,6 @@
             android:scaleType="centerCrop"
             android:background="@drawable/circle_background" />
 
-        <!-- 👤 اسم المستخدم -->
         <TextView
             android:id="@+id/txtUsername"
             android:layout_width="wrap_content"
@@ -43,7 +40,6 @@
             android:textColor="#FFFFFF"
             android:layout_marginTop="8dp" />
 
-        <!-- 📧 البريد -->
         <TextView
             android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
@@ -52,7 +48,6 @@
             android:textSize="14sp"
             android:textColor="#AAAAAA" />
 
-        <!-- 🔐 PIN -->
         <TextView
             android:id="@+id/txtPin"
             android:layout_width="wrap_content"
@@ -62,7 +57,6 @@
             android:textColor="#AAAAAA"
             android:layout_marginBottom="20dp" />
 
-        <!-- 📱 إدخال رقم الهاتف -->
         <EditText
             android:id="@+id/editPhone"
             android:layout_width="match_parent"
@@ -75,22 +69,20 @@
             android:padding="12dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- 💾 حفظ رقم الهاتف -->
         <Button
             android:id="@+id/btnSavePhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="💾 حفظ رقم الهاتف"
+            android:text=" حفظ رقم الهاتف"
             android:backgroundTint="#4CAF50"
             android:textColor="#FFFFFF"
             android:layout_marginBottom="16dp" />
 
-        <!-- 🚪 زر تسجيل الخروج -->
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🚪 تسجيل الخروج"
+            android:text=" تسجيل الخروج"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
             android:backgroundTint="#F44336" />

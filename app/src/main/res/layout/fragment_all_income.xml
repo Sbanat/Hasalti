@@ -9,7 +9,7 @@
         android:id="@+id/editSearchIncome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="بحث عن المدخول"
+        android:hint="ابحث عن المدخول"
         android:inputType="text"
         android:textColor="#FFFFFF"
         android:textColorHint="#AAAAAA"
@@ -18,14 +18,11 @@
         android:padding="12dp"
         android:layout_marginBottom="16dp" />
 
-    <ListView
-        android:id="@+id/listAllIncome"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerAllIncome"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:divider="#F5A623"
-        android:dividerHeight="1dp"
-        android:background="#1C2B3A"
-        android:padding="4dp"
-        android:clipToPadding="false" />
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"/>
 </LinearLayout>

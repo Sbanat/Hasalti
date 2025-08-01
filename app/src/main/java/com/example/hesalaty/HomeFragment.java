@@ -1,5 +1,6 @@
 package com.example.hesalaty;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.*;
@@ -17,7 +18,7 @@ import java.util.*;
 
 public class HomeFragment extends Fragment {
 
-    TextView txtShekel, txtDollar, txtDinar;
+    TextView txtShekel, txtDollar, txtDinar, txtWelcome;
     Button btnAddIncome, btnAddExpense, btnReports, btnViewAllIncome, btnViewAllExpenses;
     RecyclerView recyclerView;
     TransactionAdapter adapter;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment {
         txtShekel = view.findViewById(R.id.txtShekel);
         txtDollar = view.findViewById(R.id.txtDollar);
         txtDinar = view.findViewById(R.id.txtDinar);
+        txtWelcome = view.findViewById(R.id.txtWelcome);
         btnAddIncome = view.findViewById(R.id.btnAddIncome);
         btnAddExpense = view.findViewById(R.id.btnAddExpense);
         btnReports = view.findViewById(R.id.btnReports);
@@ -50,6 +52,7 @@ public class HomeFragment extends Fragment {
         btnViewAllExpenses.setOnClickListener(v -> ((MainActivity) getActivity()).loadFragment(new AllExpensesFragment()));
 
         loadDashboard();
+        loadUserName();
 
         return view;
     }
@@ -66,9 +69,9 @@ public class HomeFragment extends Fragment {
                         JSONObject balances = response.getJSONObject("balances");
                         JSONArray transactions = response.getJSONArray("transactions");
 
-                        txtShekel.setText("رصيد الشيكل: ₪ " + String.format("%.0f", balances.optDouble("شيكل", 0)));
-                        txtDollar.setText("رصيد الدولار: $ " + String.format("%.0f", balances.optDouble("دولار", 0)));
-                        txtDinar.setText("رصيد الدينار: JD " + String.format("%.0f", balances.optDouble("دينار", 0)));
+                        txtShekel.setText("₪ " + String.format("%.0f", balances.optDouble("شيكل", 0)));
+                        txtDollar.setText("$ " + String.format("%.0f", balances.optDouble("دولار", 0)));
+                        txtDinar.setText("JD " + String.format("%.0f", balances.optDouble("دينار", 0)));
 
                         adapter.updateData(transactions);
                     } catch (JSONException e) {
@@ -86,5 +89,37 @@ public class HomeFragment extends Fragment {
         };
 
         Volley.newRequestQueue(getContext()).add(request);
+    }
+
+    private void loadUserName() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+        String token = prefs.getString("token", "");
+
+        String url = "http://10.0.2.2:8000/api/me";
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                response -> {
+                    try {
+                        String name = response.getString("name");
+                        txtWelcome.setText("أهلاً، " + name + " ");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        txtWelcome.setText("مرحبًا ");
+                    }
+                },
+                error -> {
+                    error.printStackTrace();
+                    txtWelcome.setText("مرحبًا ");
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+
+        Volley.newRequestQueue(requireContext()).add(request);
     }
 }

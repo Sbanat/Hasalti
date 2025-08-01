@@ -1,15 +1,13 @@
 package com.example.hesalaty;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.*;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
-
+import android.provider.MediaStore;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.*;
 
 import com.android.volley.*;
@@ -17,11 +15,15 @@ import com.android.volley.toolbox.*;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileFragment extends Fragment {
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private ImageView imgProfile;
     private TextView txtUsername, txtEmail, txtPin;
     private EditText editPhone;
     private Button btnSavePhone, btnLogout;
@@ -33,6 +35,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        imgProfile = view.findViewById(R.id.imgProfile);
         txtUsername = view.findViewById(R.id.txtUsername);
         txtEmail = view.findViewById(R.id.txtEmail);
         txtPin = view.findViewById(R.id.txtPin);
@@ -47,24 +50,45 @@ public class ProfileFragment extends Fragment {
         txtPin.setText("PIN: " + pin);
         editPhone.setText(phone);
 
-        // تحميل بيانات المستخدم من API
         loadUserData();
 
-        // حفظ رقم الهاتف
         btnSavePhone.setOnClickListener(v -> {
             String newPhone = editPhone.getText().toString().trim();
             prefs.edit().putString("phone", newPhone).apply();
             Toast.makeText(getContext(), "تم حفظ رقم الجوال", Toast.LENGTH_SHORT).show();
         });
 
-        // تسجيل الخروج
         btnLogout.setOnClickListener(v -> {
             prefs.edit().clear().apply();
             startActivity(new Intent(getActivity(), LoginActivity.class));
             requireActivity().finish();
         });
 
+        imgProfile.setOnClickListener(v -> openImageChooser());
+
         return view;
+    }
+
+    private void openImageChooser() {
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == getActivity().RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), imageUri);
+                imgProfile.setImageBitmap(bitmap);
+                // يمكنك هنا حفظ الصورة أو إرسالها للسيرفر لاحقًا
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void loadUserData() {

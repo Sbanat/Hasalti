@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hesalaty">
 
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:usesCleartextTraffic="true"
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,7 +19,6 @@
         android:theme="@style/Theme.Hesalaty"
         tools:targetApi="31">
 
-        <!-- ✅ شاشة تسجيل الدخول: هي نقطة التشغيل -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -28,13 +28,8 @@
             </intent-filter>
         </activity>
 
-        <!-- ✅ الشاشة الرئيسية -->
         <activity android:name=".MainActivity" />
-
-        <!-- ✅ شاشة إنشاء الحساب -->
         <activity android:name=".RegisterActivity" />
-
-        <!-- ✅ إذا كان لديك شاشات أخرى مثل ExchangeFragment داخل Activity منفصلة أضفها هنا إذا لزم -->
 
     </application>
 

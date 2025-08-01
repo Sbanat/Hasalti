@@ -25,7 +25,6 @@ public class CurrencyConverter extends AsyncTask<Void, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(Void... voids) {
         try {
-            // ✅ التصحيح هنا
             URL url = new URL("https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/USD");
 
             HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();

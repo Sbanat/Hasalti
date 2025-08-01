@@ -16,13 +16,11 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        // ✅ إظهار اسم التطبيق وزر الرجوع في الشريط العلوي
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("حصّالتي");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // ✅ تحميل أول شاشة (الرئيسية)
         loadFragment(new HomeFragment());
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -43,14 +41,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ✅ التعامل مع زر الرجوع في الشريط العلوي
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
 
-    // ✅ التعامل مع زر الرجوع الفيزيائي
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
@@ -60,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // ✅ تحميل الفراجمنت مع السجل
     public boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
             if (fragment instanceof HomeFragment) {

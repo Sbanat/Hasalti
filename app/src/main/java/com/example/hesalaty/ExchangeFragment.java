@@ -53,7 +53,11 @@ public class ExchangeFragment extends Fragment {
     }
 
     private void setupCurrencySpinners() {
-        List<String> currencyList = Arrays.asList("شيكل", "دولار", "دينار");
+        List<String> currencyList = Arrays.asList(
+                "🇵🇸 شيكل", "🇺🇸 دولار أمريكي", "🇯🇴 دينار أردني",
+                "🇪🇺 يورو", "🇪🇬 جنيه مصري", "🇸🇦 ريال سعودي",
+                "🇦🇪 درهم إماراتي", "🇹🇷 ليرة تركية", "🇬🇧 جنيه إسترليني", "🇯🇵 ين ياباني"
+        );
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getContext(),
@@ -63,15 +67,16 @@ public class ExchangeFragment extends Fragment {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
-                ((TextView) view).setTextColor(Color.WHITE); // لون النص المختار
+                ((TextView) view).setTextColor(Color.WHITE);
+                ((TextView) view).setTextSize(16);
                 return view;
             }
 
             @Override
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
-                ((TextView) view).setTextColor(Color.WHITE); // لون العناصر عند السحب
-                view.setBackgroundColor(Color.parseColor("#1C2B3A")); // خلفية داكنة
+                ((TextView) view).setTextColor(Color.WHITE);
+                view.setBackgroundColor(Color.parseColor("#1C2B3A"));
                 return view;
             }
         };
@@ -102,12 +107,18 @@ public class ExchangeFragment extends Fragment {
         Volley.newRequestQueue(requireContext()).add(request);
     }
 
-    private String mapCurrencyCode(String currencyName) {
-        switch (currencyName) {
-            case "شيكل": return "ILS";
-            case "دولار": return "USD";
-            case "دينار": return "JOD";
-            default: return "USD";
-        }
+    private String mapCurrencyCode(String currencyDisplay) {
+        if (currencyDisplay.contains("شيكل")) return "ILS";
+        if (currencyDisplay.contains("دولار")) return "USD";
+        if (currencyDisplay.contains("دينار")) return "JOD";
+        if (currencyDisplay.contains("يورو")) return "EUR";
+        if (currencyDisplay.contains("جنيه مصري")) return "EGP";
+        if (currencyDisplay.contains("ريال")) return "SAR";
+        if (currencyDisplay.contains("درهم")) return "AED";
+        if (currencyDisplay.contains("ليرة")) return "TRY";
+        if (currencyDisplay.contains("جنيه إسترليني")) return "GBP";
+        if (currencyDisplay.contains("ين")) return "JPY";
+
+        return "USD";
     }
 }

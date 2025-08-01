@@ -10,12 +10,9 @@ import android.text.TextWatcher;
 import android.view.*;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
-
 import org.json.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +51,7 @@ public class AllExpensesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadExpenses(); // يتم التحديث تلقائيًا عند الرجوع إلى الفراجمنت
+        loadExpenses();
     }
 
     private void loadExpenses() {
@@ -64,6 +61,13 @@ public class AllExpensesFragment extends Fragment {
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 response -> {
+                    for (int i = 0; i < response.length(); i++) {
+                        try {
+                            response.getJSONObject(i).put("type", "مصروف");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     allExpenses = response;
                     adapter.updateData(response);
                 },
@@ -92,7 +96,6 @@ public class AllExpensesFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-
         adapter.updateData(filtered);
     }
 }

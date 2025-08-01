@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- 📋 عنوان التقرير -->
         <TextView
             android:id="@+id/txtSummary"
             android:layout_width="match_parent"
@@ -21,7 +20,6 @@
             android:textColor="#F5A623"
             android:layout_marginBottom="16dp" />
 
-        <!-- 🟢 شيكل -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="250dp" />
 
-        <!-- 💵 دولار -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +44,6 @@
             android:layout_width="match_parent"
             android:layout_height="250dp" />
 
-        <!-- 🟡 دينار -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal">
 
-        <!-- شعار التطبيق -->
         <ImageView
             android:id="@+id/logoImageView"
             android:layout_width="167dp"
@@ -20,7 +19,6 @@
             android:contentDescription="App Logo"
             android:src="@drawable/ic_logo" />
 
-        <!-- الاسم الكامل -->
         <EditText
             android:id="@+id/editName"
             android:layout_width="match_parent"
@@ -33,7 +31,6 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- البريد الإلكتروني -->
         <EditText
             android:id="@+id/editEmail"
             android:layout_width="match_parent"
@@ -46,7 +43,6 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- كلمة المرور -->
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
@@ -59,7 +55,6 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-        <!-- تأكيد كلمة المرور -->
         <EditText
             android:id="@+id/editPasswordConfirm"
             android:layout_width="match_parent"
@@ -72,7 +67,6 @@
             android:padding="12dp"
             android:layout_marginBottom="24dp" />
 
-        <!-- زر إنشاء الحساب -->
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"

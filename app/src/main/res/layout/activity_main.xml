@@ -6,21 +6,18 @@
     android:layout_height="match_parent"
     android:background="#0D1B2A">
 
-    <!-- محتوى التطبيق -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- حاوية الفراجمنت -->
         <FrameLayout
             android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <!-- شريط التنقل السفلي -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"

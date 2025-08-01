@@ -68,7 +68,6 @@ public class ExpenseFragment extends Fragment {
         params.put("amount", amount);
         params.put("currency", currency);
 
-        // إضافة التاريخ الحالي بصيغة yyyy-MM-dd
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         params.put("date", currentDate);
 

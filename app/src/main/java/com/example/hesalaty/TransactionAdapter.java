@@ -4,9 +4,11 @@ import android.graphics.Color;
 import android.view.*;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import org.json.*;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
+
     private JSONArray transactions;
 
     public TransactionAdapter(JSONArray data) {
@@ -30,22 +32,19 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             JSONObject obj = transactions.getJSONObject(position);
             String name = obj.getString("name");
             double amount = obj.getDouble("amount");
-            String currency = obj.optString("currency", "شيكل"); // افتراضيًا شيكل
-            String date = obj.optString("date", "");
-            String type = obj.optString("type", "مصروف");
+            String type = obj.optString("type", "مدخول");
 
             holder.txtName.setText(name);
-            holder.txtDate.setText(date);
 
-            if (type.equals("مدخول")) {
-                holder.txtAmount.setText("+ " + amount + " " + currency);
-                holder.txtAmount.setTextColor(Color.parseColor("#4CAF50")); // أخضر
+            if (type.equals("مصروف")) {
+                holder.txtAmount.setText("- " + amount);
+                holder.txtAmount.setTextColor(Color.RED);
             } else {
-                holder.txtAmount.setText("- " + amount + " " + currency);
-                holder.txtAmount.setTextColor(Color.parseColor("#F44336")); // أحمر
+                holder.txtAmount.setText("+ " + amount);
+                holder.txtAmount.setTextColor(Color.parseColor("#4CAF50")); // أخضر
             }
 
-        } catch (Exception e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -56,13 +55,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtName, txtAmount, txtDate;
+        TextView txtName, txtAmount;
 
         public ViewHolder(View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.txtTransactionName);
             txtAmount = itemView.findViewById(R.id.txtTransactionAmount);
-            txtDate = itemView.findViewById(R.id.txtTransactionDate);
         }
     }
 }

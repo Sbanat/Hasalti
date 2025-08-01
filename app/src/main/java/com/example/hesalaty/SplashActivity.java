@@ -19,11 +19,10 @@ public class SplashActivity extends AppCompatActivity {
         videoView.setVideoURI(videoUri);
 
         videoView.setOnCompletionListener(mp -> {
-            // عند انتهاء الفيديو → الانتقال إلى LoginActivity
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             finish();
         });
 
-        videoView.setOnPreparedListener(mp -> videoView.start()); // بدء التشغيل تلقائي
+        videoView.setOnPreparedListener(mp -> videoView.start());
     }
 }
