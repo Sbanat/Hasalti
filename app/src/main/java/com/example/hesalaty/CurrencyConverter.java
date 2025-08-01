@@ -15,7 +15,7 @@ public class CurrencyConverter extends AsyncTask<Void, Void, JSONObject> {
 
     private final Context context;
     private final OnExchangeResult callback;
-    private final String API_KEY = "aa360c621036f5ad34a7ec5e"; // ✅ مفتاحك الحقيقي
+    private final String API_KEY = "aa360c621036f5ad34a7ec5e"; 
 
     public CurrencyConverter(Context context, OnExchangeResult callback) {
         this.context = context;
